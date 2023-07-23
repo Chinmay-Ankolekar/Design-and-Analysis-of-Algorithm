@@ -1,47 +1,57 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-void kruskal(int cost[10][10], int n)
-{
-    int parent[10], i, j, a, b, u, v, min, count = 1, sum = 0;
-    for (i = 1; i <= n; i++)
-        parent[i] = 0;
-    while (count != n)
-    {
-        min = 999;
-        for (i = 1; i <= n; i++)
-            for (j = 1; j <= n; j++)
-                if (cost[i][j] < min)
-                {
-                    min = cost[i][j];
-                    u = a = i;
-                    v = b = j;
-                }
-        while (parent[u] != 0)
-            u = parent[u];
-        while (parent[v] != 0)
-            v = parent[v];
-        if (u != v)
-        {
-            count++;
-            sum = sum + cost[a][b];
-            cout << "\nEdge (" << a << "," << b << ") : " << cost[a][b];
-            parent[v] = u;
-        }
-        cost[a][b] = cost[b][a] = 999;
-    }
-    cout << "\nWeight of minimum spanning tree = " << sum << endl;
+#define MAX 10
+int parent[MAX],cost[MAX][MAX];
+
+int find(int i){
+    while(parent[i]>0)
+        i=parent[i];
+     return i;
 }
 
-int main()
-{
-    int cost[10][10], i, j, n;
-    cout << "\nEnter the number of vertices : ";
-    cin >> n;
-    cout << "\nEnter the cost matrix : \n";
-    for (i = 1; i <= n; i++)
-        for (j = 1; j <= n; j++)
-            cin >> cost[i][j];
-    kruskal(cost, n);
-    return 0;
+int uni(int i,int j){
+    parent[j]=i;
+}
+
+void krushkal(int cost[MAX][MAX],int n){
+    int a=0,b=0,u=0,v=0;
+    int i,j,min,mincost=0;
+    int ne=1;  //ne = no. of edges
+
+    while(ne<n){
+       
+       for(i=1,min=999;i<=n;i++)
+          for(j=1;j<=n;j++)
+            if(cost[i][j]<min){
+                min=cost[i][j];
+                a=u=i;
+                b=v=j;
+            }
+             u=find(u);
+             v=find(v);
+             if(u!=v){
+                uni(u,v);
+                ne++;
+                cout << "\nEdge (" << a << "," << b << ") : " << min;
+                mincost += min;
+             }
+            cost[a][b]=cost[b][a]=999;
+    }
+    cout<<"\nMinimum cost :"<<mincost;
+}
+
+int main(){
+    int n,i,j;
+    cout<<"Enter the no. of vertices :";
+    cin>>n;
+    cout<<"Enter the cost matrix\n";
+    for(i=1;i<=n;i++){
+       for(j=1;j<=n;j++){
+           cin>>cost[i][j];
+           if(cost[i][j]==0)
+           cost[i][j]=999;
+       }
+    }
+    krushkal(cost,n);
 }
