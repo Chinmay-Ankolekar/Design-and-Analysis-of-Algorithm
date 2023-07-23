@@ -9,7 +9,7 @@ int find(int i){
      return i;
 }
 
-int uni(int i,int j){
+void Union(int i,int j){
     parent[j]=i;
 }
 
@@ -30,7 +30,7 @@ void krushkal(int cost[MAX][MAX],int n){
              u=find(u);
              v=find(v);
              if(u!=v){
-                uni(u,v);
+                Union(u,v);
                 ne++;
                 cout << "\nEdge (" << a << "," << b << ") : " << min;
                 mincost += min;
