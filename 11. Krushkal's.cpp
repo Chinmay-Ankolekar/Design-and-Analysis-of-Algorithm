@@ -1,6 +1,5 @@
 #include<iostream>
 using namespace std;
-
 #define MAX 10
 int parent[MAX],cost[MAX][MAX];
 
