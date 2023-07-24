@@ -21,19 +21,20 @@ void krushkal(int cost[MAX][MAX],int n){
 
     while(ne<n){
        
-       for(i=1,min=999;i<=n;i++)
-          for(j=1;j<=n;j++)
+       for(i=1,min=999;i<=n;i++){
+          for(j=1;j<=n;j++){
             if(cost[i][j]<min){
                 min=cost[i][j];
                 a=u=i;
                 b=v=j;
             }
+       }
+    }
              u=find(u);
              v=find(v);
              if(u!=v){
                 Union(u,v);
-                ne++;
-                cout << "\nEdge (" << a << "," << b << ") : " << min;
+                cout << "\nEdge-"<<ne++<< " (" << a << "," << b << ") : " << min;
                 mincost += min;
              }
             cost[a][b]=cost[b][a]=999;
@@ -45,12 +46,10 @@ int main(){
     int n,i,j;
     cout<<"Enter the no. of vertices :";
     cin>>n;
-    cout<<"Enter the cost matrix\n";
+    cout<<"Enter the cost matrix (999 for no-edge and self loops)\n";
     for(i=1;i<=n;i++){
        for(j=1;j<=n;j++){
            cin>>cost[i][j];
-           if(cost[i][j]==0)
-           cost[i][j]=999;
        }
     }
     krushkal(cost,n);
