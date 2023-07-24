@@ -17,7 +17,7 @@ void Union(int i,int j){
 void krushkal(int cost[MAX][MAX],int n){
     int a=0,b=0,u=0,v=0;
     int i,j,min,mincost=0;
-    int ne=1;  //ne = no. of edges
+    int ne=1;  //ne=no.of edges
 
     while(ne<n){
        
