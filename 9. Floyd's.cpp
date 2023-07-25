@@ -29,15 +29,15 @@ void floyd(int cost[MAX][MAX], int n){
         }
     }
 }
-// void floyd(int cost[MAX][MAX], int n){
-//     for (int i = 0; i < n; i++){
-//         for (int j = 0; j < n; j++){
-//             for (int k = 0; k < n; k++){
-//                 cost[j][k] = min(cost[j][k], cost[j][i] + cost[i][k]);
-//             }
-//         }
-//     }
-// }
+/*void floyd(int cost[MAX][MAX], int n){
+    for (int i = 0; i < n; i++){
+        for (int j = 0; j < n; j++){
+            for (int k = 0; k < n; k++){
+                cost[j][k] = min(cost[j][k], cost[j][i] + cost[i][k]);
+            }
+        }
+    }
+}*/
 
 void print(int cost[MAX][MAX], int n){
     cout <<"After applying Floyd's Algorithm :\n";
