@@ -57,11 +57,11 @@ void approx(int ver){
 
 int main(){
     int v[100],ver,n,i,j;
-    cout <<"Enter No. of vertex :";
+    cout <<"Enter No. of vertices :";
     cin>>ver;
     for(i=0;i<ver;i++)
     v[i]=i+1;
-    cout<<"Enter the Cost matrix\n";
+    cout<<"Enter the Cost matrix (999 for infinity)\n";
     for(i=1;i<=ver;i++)
       for(j=1;j<=ver;j++)
         cin>>c[i][j];
