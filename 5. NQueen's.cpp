@@ -1,71 +1,47 @@
-#include <iostream>
-#include <math.h>
+#include<iostream>
 using namespace std;
+#define MAX 10
 
-int place(int a[], int k)
-{
-    int i;
-    for (i = 1; i < k; i++)
-        if (a[i] == a[k] || (abs(a[i] - a[k])) == abs(i - k))
-            return 0;
-    return 1;
-}
+int board[MAX],i,j;
 
-void printsolution(int n, int a[])
-{
-    int i, j;
-    char c[10][10];
-    for (i = 1; i <= n; i++)
-    {
-        for (j = 1; j <= n; j++)
-            c[i][j] = '-';
-    }
-    for (i = 1; i <= n; i++)
-        c[i][a[i]] = 'Q';
-    for (i = 1; i <= n; i++)
-    {
-        for (j = 1; j <= n; j++)
-        {
-            cout << c[i][j] << "\t";
+bool isSafe(int row,int col){
+    for(i=0;i<row;i++){
+        if (board[i] == col || (board[i] - col) == (i - row) || (board[i] - col) == (row - i)) {
+            return false;
         }
-        cout << "\n";
     }
+    return true;
 }
 
-void nqueens(int n)
-{
-    int a[10], count = 0, k = 1;
-    a[k] = 0;
-    while (k != 0)
-    {
-        a[k]++;
-        while (a[k] <= n && (!place(a, k)))
-            a[k]++;
-        if (a[k] <= n)
-        {
-            if (k == n)
-            {
-                count++;
-                cout << "\nSolution" << count << "\n";
-                printsolution(n, a);
-            }
+void print(int n){
+    for (i=0;i<n;i++) {
+        for (j=0;j<n;j++) {
+            if (board[i] == j)
+                cout <<" Q ";
             else
-            {
-                k++;
-                a[k] = 0;
-            }
+                cout <<" - ";
         }
-        else
-        {
-            k--;
+        cout <<"\n";
+    }
+    cout <<"\n";
+}
+
+void nqueen(int row,int n){
+    if(row==n){
+        print(n);
+        return;
+    }
+    for(int col=0;col<n;col++){
+        if(isSafe(row,col)){
+           board[row]=col;
+           nqueen(row+1,n);
         }
     }
 }
 
-int main()
-{
+int main(){
     int n;
-    cout << "Enter the no.of queens:";
-    cin >> n;
-    nqueens(n);
+    cout<<"Enter the No. of Queen's :";
+    cin>>n;
+    nqueen(0,n);
 }
