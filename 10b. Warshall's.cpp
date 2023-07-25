@@ -22,15 +22,17 @@ void warshall(int cost[MAX][MAX], int n){
         }
     }
 }
-// void warshall(int adj[MAX][MAX], int n){
-//     for (int i = 0; i < n; i++){
-//         for (int j = 0; j < n; j++){
-//             for (int k = 0; k < n; k++){
-//                 adj[j][k] = adj[j][k] || (adj[j][i] && adj[i][k]);
-//             }
-//         }
-//     }
-// }
+/*
+void warshall(int adj[MAX][MAX], int n){
+    for (int i = 0; i < n; i++){
+        for (int j = 0; j < n; j++){
+            for (int k = 0; k < n; k++){
+                adj[j][k] = adj[j][k] || (adj[j][i] && adj[i][k]);
+            }
+        }
+    }
+}
+*/
 
 void printGraph(int cost[MAX][MAX], int n){
     cout << "After Applying Warshall's Transitive Closure:\n";
