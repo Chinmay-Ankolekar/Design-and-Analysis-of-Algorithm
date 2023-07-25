@@ -7,9 +7,9 @@ int i,j,k,cost[MAX][MAX];
 
 #define min(x,y) (((x)>(y) ? y: x))
 
-// int min(int a, int b) {
-//     return (a < b) ? a : b;
-// }
+/*int min(int a, int b) {
+    return (a < b) ? a : b;
+}*/
 
 void create(int cost[MAX][MAX], int n){
     cout << "Enter cost Matrix (999 for infinity)\n";
