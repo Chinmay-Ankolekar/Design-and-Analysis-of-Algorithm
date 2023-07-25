@@ -40,7 +40,8 @@ void floyd(int cost[MAX][MAX], int n){
             }
         }
     }
-}*/
+}
+*/
 
 void print(int cost[MAX][MAX], int n){
     cout <<"After applying Floyd's Algorithm :\n";
