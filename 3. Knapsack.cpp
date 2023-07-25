@@ -21,15 +21,17 @@ int knapsack(int items, int capacity, int profit[], int weight[]){
     }
    return knap[items][capacity];
 }
-// int knapsack(int items, int capacity, int profit[], int weight[]){
-//     int i,j;
-//      for (i = 1; i <= items; i++){
-//         for (j = 1; j <= capacity; j++){
-//             knap[i][j] = (j < weight[i]) ? knap[i - 1][j] : max(knap[i - 1][j], profit[i] + knap[i - 1][j - weight[i]]);
-//         }
-//    }
-//     return knap[items][capacity];
-// }
+/*
+int knapsack(int items, int capacity, int profit[], int weight[]){
+    int i,j;
+     for (i = 1; i <= items; i++){
+        for (j = 1; j <= capacity; j++){
+            knap[i][j] = (j < weight[i]) ? knap[i - 1][j] : max(knap[i - 1][j], profit[i] + knap[i - 1][j - weight[i]]);
+        }
+   }
+    return knap[items][capacity];
+}
+*/
 
 int main(){
     int i,j,n,items,capacity,profit[MAX],weight[MAX],optimum_val;
