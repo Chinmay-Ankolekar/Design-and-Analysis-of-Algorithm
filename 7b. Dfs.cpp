@@ -1,35 +1,39 @@
 #include<iostream>
 using namespace std;
 
-int visit[10],n,adj[10][10],s,nodecount=0;
+int visited[10],n,cost[10][10],count=0,i,j;
 
-void dfs(int u){
+void dfs(int source){
     int i;
-    visit[u]=1;
-    nodecount++;
+    visited[source]=1;
+    count++;
     for(i=1;i<=n;i++){
-        if((adj[u][i]==1)&&(visit[i]==0)){
+        if((cost[source][i]==1)&&(visited[i]==0)){
             dfs(i);
         }
     }
 }
 
 int main(){
-    int i,j;
-    cout<<"Enter number of vertices: "<<endl;
+    int source;
+    cout<<"Enter no. of vertices :";
     cin>>n;
-    printf("Enter the adjacency matrix:\n");
-  for(i=1;i<=n;i++)
-    for(j=1;j<=n;j++)
-      scanf("%d",&adj[i][j]);
+    cout<<"Enter the cost matrix (1 for edge & 0 for no-edge)\n";
+     for(i=1;i<=n;i++){
+       for(j=1;j<=n;j++){
+           cin>>cost[i][j];
+       }
+    }
+    for(i=1;i<=n;i++)
+        visited[i]=0;
+    
+    cout<<"Enter the Source Vertex :";
+    cin>>source;
 
-  for(i=1;i<=n;i++)
-      visit[i]=0;
-
-    dfs(1);
-
-  if(nodecount==n)
-   printf("\nThe graph is connected");
-  else
-   printf("The graph is not connected");
+    dfs(source);
+    
+    if (count == n)
+      cout <<"The graph is connected";
+    else
+      cout <<"The graph is not connected";
 }
