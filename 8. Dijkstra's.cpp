@@ -1,46 +1,50 @@
 #include <iostream>
 using namespace std;
 
-void dijkstra(int n, int source, int cost[10][10], int distance[])
-{
-    int i, v, u, visited[10], min, count = 2;
-    for (i = 1; i <= n; i++)
-        visited[i] = 0;
-    distance[i] = cost[source][i];
-    while (count <= n)
-    {
-        min = 999;
-        for (u = 1; u <= n; u++)
-            if (distance[u] < min && !visited[u])
-                min = distance[u];
-                v = u;
-               visited[v] = 1;
-               count++;
-        for (u = 1; u <= n; u++)
-            if ((distance[v] + cost[v][u] < distance[u]) && !visited[u])
-                distance[u] = distance[v] + cost[v][u];
+int visited[20]={0}, dis[20]={0}, n;
+
+void dijkstras(int source, int cost[20][20]){
+    int i,j,min,u,w;
+    for (i=1; i <= n; i++){
+        visited[i]=0;
+        dis[i] = cost[source][i];
+    }
+    visited[source]=1;
+    dis[source]=0;
+    for (j=2,min=999;j<=n;j++){
+        for (i=1;i<=n;i++){
+            if (!visited[i]){
+                if (dis[i] < min){
+                    min = dis[i];
+                    u = i;
+                }
+            }
+        }
+        visited[u] = 1;
+        for (w=1;w<=n;w++){
+            if (cost[u][w]!= 999 && visited[w] == 0){
+                if (dis[w] > cost[u][w] + dis[u])
+                    dis[w] = cost[u][w] + dis[u];
+            }
+        }
     }
 }
 
 int main()
 {
-    int n, source, i, j, cost[10][10], distance[10];
-    cout << "Enter the number of nodes : ";
+    int i, j, n, source, cost[20][20];
+    cout << "Enter no. of vertices:";
     cin >> n;
-    cout << "Enter the cost matrix :\n";
-    for (i = 1; i <= n; i++)
-        for (j = 1; j <= n; j++)
-        {
+    cout <<"Enter the cost  matrix(999 for infinity)\n";
+    for (i = 1; i <= n; i++){
+        for (j = 1; j <= n; j++){
             cin >> cost[i][j];
-            if (cost[i][j] == 0)
-                cost[i][j] = 999;
         }
-    cout << "Enter the source : ";
-    cin >> source;
-    dijkstra(n, source, cost, distance);
-    cout << "Shortest path from given source are :\n";
-    for (i = 1; i <= n; i++)
-        if (i != source)
-            cout << source << " --> " << i << " : cost = " << distance[i] << endl;
-    return 0;
+    }
+    cout <<"Enter the source node:";
+    cin >>source;
+    dijkstras(source, cost);
+    for (i=1;i<=n;i++)
+        if (i!=source)
+            cout << "\nShortest path from" << source << "to" << i << "is" << dis[i];
 }
