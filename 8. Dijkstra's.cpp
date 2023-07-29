@@ -67,6 +67,6 @@ Enter the source :1
 
 Shortest path from 1 --> 2 is 3
 Shortest path from 1 --> 3 is 7
-*/
 Shortest path from 1 --> 4 is 1
-// Shortest path from 1 --> 5 is 2
+Shortest path from 1 --> 5 is 2
+*/
