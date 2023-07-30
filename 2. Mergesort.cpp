@@ -68,10 +68,9 @@ cout<<"\nTime taken for sorted "<<n<<" elements is :"<<time;
 
 for(i=10000;i<=100000;i+=2000){
         n=i;
-        int j;
         int a[n];
-        while(j<n)
-           a[j++]=rand()%1000;
+		for(j=0;j<n;j++)
+           a[j]=rand()%100;
         clock_t start=clock();
         mergesort(a,0,n-1);
         clock_t end=clock();
@@ -80,7 +79,7 @@ for(i=10000;i<=100000;i+=2000){
         file.open("mergesort.txt", ofstream :: app);
         file<<n<<"\t"<<t<<"\n";
         file.close();
-    }
+  }
    cout<<"\nTime to sort 10000 to 100000 (incrementing 2000 per iteration) element is added to the file mergesort.txt ";
    return 0;
 }
