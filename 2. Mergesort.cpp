@@ -34,6 +34,7 @@ void merge(int a[], int low, int high, int mid){
 		a[i] = temp[i-low];
 	}
 }
+
 void mergesort(int a[], int low, int high){
 	int mid;
 	if (low < high){
