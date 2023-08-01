@@ -46,12 +46,12 @@ void mergesort(int a[], int low, int high){
  
 int main()
 {
- int n, i, a[100000];
-    cout<<"Enter the Number of Element to be sorted : ";
-    cin>>n;
+	int n, i,a[100000],j;
+	cout<<"Enter the Number of Element to be sorted : ";
+	cin>>n;
     cout<<"The Random numbers are :"; 
     for(i=0;i<n;i++){
-    a[i]=rand()%1000;
+    a[i]=rand()%100;
     cout<<a[i]<<" ";
 }
 
@@ -62,9 +62,11 @@ int main()
 cout<<"\nSorted Element are : ";
 for (i = 0; i < n; i++)
     cout<<" "<<a[i];
-
 double time=(double) (end-start)/CLOCKS_PER_SEC;
-cout<<"\nTime taken for sorted "<<n<<" elements is :"<<time;    
+cout<<"\nTime taken for sorted "<<n<<" elements is :"<<time;   
+
+ofstream file;
+file.open("mergesort.txt", ofstream :: app);
 
 for(i=10000;i<=100000;i+=2000){
         n=i;
@@ -75,11 +77,10 @@ for(i=10000;i<=100000;i+=2000){
         mergesort(a,0,n-1);
         clock_t end=clock();
         double t=(double) (end-start)/CLOCKS_PER_SEC;
-        ofstream file;
-        file.open("mergesort.txt", ofstream :: app);
         file<<n<<"\t"<<t<<"\n";
-        file.close();
-  }
+    }
+
+   file.close();
    cout<<"\nTime to sort 10000 to 100000 (incrementing 2000 per iteration) element is added to the file mergesort.txt ";
    return 0;
 }
